@@ -1,2 +1,2 @@
 # simple
-a simple template of fism
+a simple template of fism.
