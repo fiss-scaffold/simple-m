@@ -1,5 +1,5 @@
 /**
- * index.js
+ * @description [description]
  * @author [author]
  */
 

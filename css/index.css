@@ -1,5 +1,6 @@
-/**
- * index.css
- */
+/*index.css*/
+
+@import url(./reset.css?__inline);
+
 
 /* TODO */
