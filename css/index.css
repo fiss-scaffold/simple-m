@@ -1,6 +1,7 @@
+@charset "UTF-8";
 /*index.css*/
 
-@import url(./reset.css?__inline);
+@import url(./reset.css?__inline); /* 导入reset.css，并且内嵌到本样式文件*/
 
 
-/* TODO */
+/* TODO COOL THINGS*/
