@@ -1,0 +1,12 @@
+/*main.css*/
+.middle{
+	position: absolute;
+	width: 100%;
+	top: 67px;
+	padding: 10px;
+}
+
+.middle p{
+	font-size: 1.2em;
+}
+

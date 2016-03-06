@@ -1,90 +1,54 @@
 // fis 配置文件
-
-fis
-.match('*.{js,css,png,jpeg,gif,jpg}', {
-	useHash: true,
-	release: 'static/$0'
-})
-.match('js/*.js', {
-  optimizer: fis.plugin('uglify-js')
-})
-.match('css/*.css', {
-  optimizer: fis.plugin('clean-css'),
-  useSprite: true
-})
-.match('images/*.png', {
-  optimizer: fis.plugin('png-compressor')
+// 开发阶段构建配置
+fis.media('pro').match('*.{css,js,png,jpg,gif}',{
+  // useHash: true,
+  release: 'static/$0'
 });
 
 
 
-// lint
-fis.media('lint')
-.match('js/*.js', {
-  lint: fis.plugin('eslint', {
-      env: {
-        "browser": true
-      },
-      ignore: [/*忽略的文件列表*/],
-      userEslintrc: false,
-      rules: {
-        "semi": 2,
-        "no-underscore-dangle": 0,
-        "no-unused-expressions": 1,
-        "eol-last": 1,
-        "curly": 1,
-        "no-unused-vars": 2,
-        "no-use-before-define": 2,
-        "no-multi-spaces": 1,
-        "no-shadow": 2,
-        "dot-notation": 2,
-        "no-undef": 2,
-        "block-scoped-var": 2,
-        "no-empty": 1,
-        "quotes": [2, "single", "avoid-escape"]
-      }
+
+// 发布阶段构建配置
+fis.match('*.{css,js,png,jpg,gif}',{
+  // useHash: true,
+  release: 'static/$0'
+
+}).match('*.scss', {
+  // parser: fis.plugin('node-sass'),
+  rExt: '.css'
+
+}).match('js/*.js', {
+  optimizer: fis.plugin('uglify-js')
+
+}).match('css/*.css', {
+  optimizer: fis.plugin('clean-css'),
+  useSprite: true
+
+}).match('images/*.png', {
+  optimizer: fis.plugin('png-compressor')
+
+}).match('::package', {
+  spriter: fis.plugin('csssprites'),
+  postpackager: fis.plugin('loader', {
+    allinone: true
   })
-})
-.match('css/*.css', {
-  lint: fis.plugin('csslint', {
-  	ignore:[/*忽略的文件列表*/],
-  	rules: {
-      'box-model': 1,
-      'known-properties': 2,
-      'empty-rules': 1,
-      'display-property-grouping': 2,
-      'duplicate-properties': 2,
 
-      'adjoining-classes': 0,
-      'box-sizing': 0,
-      'compatible-vendor-prefixes': 1,
-      'gradients': 1,
-      'text-indent': 1,
-      'vendor-prefix': 1,
-      'fallback-colors': 2,
-      'star-property-hack': 2,
-      'underscore-property-hack': 2,
-      'bulletproof-font-face': 0,
+});
 
-      'font-faces': 1,
-      'import': 0,
-      'regex-selectors': 1,
-      'universal-selector': 1,
-      'unqualified-attributes': 1,
-      'zero-units': 1,
-      'overqualified-elements': 1,
-      'shorthand': 1,
-      'duplicate-background-images': 1,
+// index 发布打包操作
+fis.media('proIndex').match('*.{css,scss}', {
+  packTo: 'index.pro.css'
 
-      'float': 1,
-      'font-sizes': 1,
-      'ids': 1,
-      'important': 1,
+}).match('*.js', {
+  packTo: 'index.pro.js'
 
-      'outline-none': 1,
+});
 
-      'qualified-headings': 1,
-      'unique-headings': 1
-  	}
-  })
+// about 发布打包操作
+fis.media('proAbout').match('*.{css,scss}', {
+  packTo: 'about.pro.css'
+
+}).match('*.js', {
+  packTo: 'about.pro.js'
+
 });

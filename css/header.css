@@ -1,0 +1,13 @@
+
+/*header.scss*/
+.header{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	background-color: #dedede;
+	padding: 20px 0;
+}
+.header p{
+	text-align: center;
+	font-size: 2em;
+}
