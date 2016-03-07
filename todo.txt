@@ -4,4 +4,22 @@
 	2.2 配host，域名解析到127.0.0.1，
 3. allInOne合并策略是挨在一起的内联或外链js合并，如果外链js被内联分割开，则不会合并成一个文件。
 4. release之前没有删除output路径
+5. url配置
 
+
+# 优势
+
+1. 资源路径替换，相对改成绝对路径
+2. inline资源内嵌
+3. 资源合并 
+4. 图片sprite 支持group
+5. 支持dev/prod/qa/ release
+6. 配置加md5
+7. 自动把依赖合并（js/css/html）
+8. 接口mock
+
+
+9. sass-〉css
+10.release时分别压缩css/js/img
+10. watch-〉flush
+11. release 自动部署测试环境
