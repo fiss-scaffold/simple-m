@@ -87,7 +87,7 @@ fis.media('debug').match('*.{js,css,scss,png}', {
 // 上线时打包配置
 fis.media('prod')
     .match('*.{css,scss}', {
-        //useHash: true,
+        useHash: false,
         optimizer: fis.plugin('clean-css'),
         domain: 'http://c.58cdn.com.cn' + urlPre
     })
@@ -98,6 +98,7 @@ fis.media('prod')
     })
     .match('*.js', {
         // fis-optimizer-uglify-js 插件进行压缩，已内置
+        useHash:false,
         optimizer: fis.plugin('uglify-js'),
         domain: 'http://j1.58cdn.com.cn' + urlPre
     })
