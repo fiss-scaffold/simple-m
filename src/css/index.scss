@@ -1,0 +1,56 @@
+/**
+ * @file 首页样式文件
+ * @author lenovo
+ */
+@import "reset";
+
+body {
+	background-color: #FFCCFF;
+}
+@import "common";
+
+
+.logo{
+	width:16px;
+	height:16px;
+	display:inline-block;
+	/*background:url(../img/history.png?__sprite=rabbit) no-repeat;*/
+	background:url(../img/history.png?__inline) no-repeat;
+}
+ul{
+	margin-left:24px;
+	margin-bottom:20px;
+}
+
+li {
+  position: relative;
+  list-style: none;
+  margin-top:20px;
+  &::before{
+  	content: "";
+	  position: absolute;
+	  height: 24px;
+	  width: 24px;
+	  left: -24px;
+  }
+  &.list-1::before {
+	  background-image: url('../img/rabbit-1.png?__sprite=rabbit');
+	}
+
+	&.list-2::before {
+	  background-image: url('../img/rabbit-2.png?__sprite=rabbit');
+	}
+	&.list-3::before {
+	  background-image: url('../img/rabbit-3.png?__sprite=rabbit');
+	}
+
+	&.bird-1::before {
+	  background-image: url('../img/bird-1.png?__sprite=bird');
+	}
+
+	&.bird-2::before {
+	  background-image: url('../img/bird-2.png?__sprite=bird');
+	}
+}
+
+

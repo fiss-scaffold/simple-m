@@ -1,0 +1,30 @@
+//common.scss
+
+/*common-head scss begin*/
+
+.fence {
+    width: 100%;
+    height: 48px;
+    background-image: url('../img/fence2.png?__sprite');
+    background-repeat: repeat-x;
+}
+
+.sidebar {
+    width: 24px;
+    height: 100%;
+    background-image: url('../img/butterfly.png?__sprite');
+    background-repeat: repeat-y;
+    position: fixed;
+    left: 0;
+    top: 48px;
+}
+
+/*common-head scss end*/
+
+
+.wrapper {
+    margin-left: 24px;
+}
+
+
+
