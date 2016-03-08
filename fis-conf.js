@@ -1,8 +1,11 @@
-var urlPre = '/zt/xxx'
+
+var urlPre = '/zt/xxx';
 var mergeConfg = {
     '/src/index.html': 'index',
     '/src/page1.html': 'page1'
-}
+};
+
+
 
 //添加忽略的文件列表
 fis.set('project.ignore', [
@@ -51,38 +54,33 @@ fis.match('/src/test/server.conf', {
   release: '/config/server.conf'
 });
 
-//fis.match('**/another.css', {
-//  release: false
-//});
 
 
-var boot_config = {
-    'src/index.html': 'pkg_index',
-    'src/page1.html': 'pkg_page1'
-};
-var pageFiles = Object.keys(boot_config);
-
-// 利用fis的loader进行css/js合并
-fis.match('::package', {
-    postpackager: fis.plugin('loader', {
-        allInOne: {
-            js: function(filepath) {
-                return 'js/pkg/' + mergeConfg[filepath] + '.js';
-            },
-            css: function(filepath) {
-                return 'css/pkg/' + mergeConfg[filepath] + '.css';
-            }
-        }
-
-    })
+// css javascript 代码校验
+fis.match('*.css', {
+  lint: fis.plugin('csslint', {
+    ignore: [],
+    rules: {
+      "known-properties": 2,
+      "empty-rules": 1
+    }
+  })
+}).match('*.js', {
+  lint: fis.plugin('eslint', {
+    ignore: ['lib/**.js','fis-conf.js'],
+    rules: {
+      semi: 2
+    }
+  })
 });
 
-//调试时的打包配置
+// 调试时的配置
 fis.media('debug').match('*.{js,css,scss,png}', {
     useHash: false,
     useSprite: false,
     optimizer: null
 });
+
 
 // 上线时打包配置
 fis.media('prod')
@@ -105,6 +103,18 @@ fis.media('prod')
     .match('lib/*.js', {
         domain: 'http://j1.58cdn.com.cn' + urlPre
     })
+    .match('::package', {
+        postpackager: fis.plugin('loader', {
+            allInOne: {
+                js: function(filepath) {
+                    return 'js/pkg/' + mergeConfg[filepath] + '.js';
+                },
+                css: function(filepath) {
+                    return 'css/pkg/' + mergeConfg[filepath] + '.css';
+                }
+            }
+        })
+    });
     /* .match('*.html', {
          //invoke fis-optimizer-html-minifier
          optimizer: fis.plugin('html-minifier')
@@ -112,8 +122,8 @@ fis.media('prod')
 
 //deploy
 fis.media('qa').match('*', {
-  deploy: fis.plugin('http-push', {
-    receiver: 'http://192.168.119.5:8999/receiver',
-    to: '/home/fe/webs/fis3_demo' // 注意这个是指的是测试机器的路径，而非本地机器
-  })
-})
+    deploy: fis.plugin('http-push', {
+      receiver: 'http://192.168.119.5:8999/receiver',
+      to: '/home/fe/webs/fis3_demo' // 注意这个是指的是测试机器的路径，而非本地机器
+    })
+  });

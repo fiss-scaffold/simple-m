@@ -4,5 +4,12 @@ node_modules
 # log files
 *.log
 
-#output
+# error files
+*.err
+
+# generated file
 output
+pro
+debug
+dev
+qa
