@@ -61,14 +61,17 @@ fis.match('*.css', {
         ignore: [],
         rules: {
             "known-properties": 2,
-            "empty-rules": 1
+            "empty-rules": 1,
+            "duplicate-properties": 2
         }
     })
 }).match('*.js', {
     lint: fis.plugin('eslint', {
         ignore: ['lib/**.js', 'fis-conf.js'],
         rules: {
-            semi: 2
+            "semi": [2],
+            "no-use-before-define": [2],
+            "no-unused-vars": [2]
         }
     })
 });
@@ -85,10 +88,10 @@ fis.media('test')
         postpackager: fis.plugin('loader', {
             allInOne: {
                 js: function(filepath) {
-                    return 'pkg/' + mergeConfg[filepath] + '.js';
+                    return 'pkg/js/' + mergeConfg[filepath] + '.js';
                 },
                 css: function(filepath) {
-                    return 'pkg/' + mergeConfg[filepath] + '.css';
+                    return 'pkg/css/' + mergeConfg[filepath] + '.css';
                 }
             }
         })
@@ -133,10 +136,10 @@ fis.media('prod')
         postpackager: fis.plugin('loader', {
             allInOne: {
                 js: function(filepath) {
-                    return 'pkg/' + mergeConfg[filepath] + '.js';
+                    return 'pkg/js/' + mergeConfg[filepath] + '.js';
                 },
                 css: function(filepath) {
-                    return 'pkg/' + mergeConfg[filepath] + '.css';
+                    return 'pkg/css/' + mergeConfg[filepath] + '.css';
                 }
             }
         })

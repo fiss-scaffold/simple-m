@@ -1,7 +1,4 @@
 //foo.js
-/**
- * @require ./base.js
- */
 
 //你的js应该包含在一个自执行函数里面
 ;(function(){
