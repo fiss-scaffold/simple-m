@@ -12,7 +12,7 @@ npm install --registry=https://registry.npm.taobao.org
 ### 打包
 ```bash
 # output是你打包后的文件存放的目录
-cd /rootdir
+cd rootdir
 # 打包dev版本
 rm -rf ./output #不是必须，为了每次产出都是干净的版本，可以先清空下output目录
 fiss release -d ./output
