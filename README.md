@@ -6,7 +6,7 @@
 ### 安装依赖
 ```bash
 # rootdir 是你fis-confi.js所在的目录
-cd /rootdir
+cd rootdir
 npm install --registry=https://registry.npm.taobao.org
 ```
 ### 打包
