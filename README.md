@@ -18,6 +18,9 @@ git clone https://github.com/fiss-scaffold/simple-m.git
 # rootdir 是你fis-confi.js所在的目录
 cd rootdir
 npm install --registry=https://registry.npm.taobao.org
+# 因为gfw，npm安装经常失败可以用cnpm来安装
+npm install cnpm -g
+cnpm intall 
 ```
 ### 打包
 ```bash
