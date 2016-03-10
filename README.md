@@ -10,7 +10,7 @@ npm install fiss -g
 fiss init simple-m
 
 #或
-git clone url
+git clone https://github.com/fiss-scaffold/simple-m.git
 
 ```
 ### 安装依赖
