@@ -3,6 +3,16 @@
 一个基于 fiss 的简单 M 端工程模板。初始化后请替换的你的 README.md 内容。
 
 ## 使用方法
+## 安装方法
+```bash
+#首先安装fiss
+npm install fiss -g 
+fiss init simple-m
+
+#或
+git clone url
+
+```
 ### 安装依赖
 ```bash
 # rootdir 是你fis-confi.js所在的目录
