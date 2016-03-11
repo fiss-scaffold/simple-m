@@ -58,7 +58,7 @@ fis.match('/src/test/server.conf', {
 // css javascript 代码校验
 fis.match('*.css', {
     lint: fis.plugin('csslint', {
-        ignore: [],
+        ignoreFiles: [],
         rules: {
             "known-properties": 2,
             "empty-rules": 1,
@@ -67,12 +67,13 @@ fis.match('*.css', {
     })
 }).match('*.js', {
     lint: fis.plugin('eslint', {
-        ignore: ['lib/**.js', 'fis-conf.js'],
+        ignoreFiles: ['lib/**.js', 'fis-conf.js'],
         rules: {
             "semi": [2],
             "no-use-before-define": [2],
             "no-unused-vars": [2]
-        }
+        },
+        globals: ['zt']
     })
 });
 
