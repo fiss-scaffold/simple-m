@@ -1,3 +1,6 @@
+//发布路径设置
+fis.set('release.dir','output');
+
 var urlPre = '/zt/xxx';
 var mergeConfg = {
     '/src/index.html': 'index',
@@ -28,11 +31,11 @@ fis.match('::package', {
 
 
 //资源预处理
-fis.match('css/*.scss', {
+fis.match('*.scss', {
     parser: fis.plugin('node-sass'),
     rExt: '.css',
 });
-fis.match('css/*.{scss,css}', {
+fis.match('*.css', {
     useSprite: true,
 });
 
@@ -112,6 +115,7 @@ fis.media('debug').match('*.{js,css,scss,png}', {
 });
 
 fis.media('test')
+    .set('release.dir','output2')
     .match('::package', {
         postpackager: fis.plugin('loader', {
             allInOne: {
@@ -123,20 +127,9 @@ fis.media('test')
                 }
             }
         })
-    })
-    .match('*.{css,scss}', {
-        useHash: false,
-        optimizer: fis.plugin('clean-css'),
-    })
-    .match('*.png', {
-        useHash: true,
-        optimizer: fis.plugin('png-compressor'),
-    })
-    .match('*.js', {
-        // fis-optimizer-uglify-js 插件进行压缩，已内置
-        useHash: false,
-        optimizer: fis.plugin('uglify-js'),
     });
+  
+
 
 
 // 上线时打包配置
