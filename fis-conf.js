@@ -72,7 +72,6 @@ fis.match('*.css', {
 }).match('*.js', {
     lint: fis.plugin('eslint', {
         ignoreFiles: ['lib/**.js', 'fis-conf.js'],
-        env: ["browser"],
         rules: {
             "no-underscore-dangle": 0,
             "no-unused-expressions": 1,
