@@ -53,6 +53,10 @@ fis.match('/src/test/server.conf', {
     release: '/config/server.conf'
 });
 
+fis.match('src/js/(lib/**)', {
+    release: '/pkg/$1',
+    useHash: false
+});
 
 
 // css javascript 代码校验
@@ -68,10 +72,16 @@ fis.match('*.css', {
 }).match('*.js', {
     lint: fis.plugin('eslint', {
         ignoreFiles: ['lib/**.js', 'fis-conf.js'],
+        env: ["browser"],
         rules: {
-            "semi": [2],
-            "no-use-before-define": [2],
-            "no-unused-vars": [2]
+            "no-underscore-dangle": 0,
+            "no-unused-expressions": 1,
+            "eol-last": 1,
+            "curly": 1,
+            "no-unused-vars": 1,
+            "no-use-before-define": 2,
+            "no-undef": 2,
+            "block-scoped-var": 2,
         },
         globals: ['zt']
     })
@@ -89,10 +99,10 @@ fis.media('test')
         postpackager: fis.plugin('loader', {
             allInOne: {
                 js: function(filepath) {
-                    return 'pkg/js/' + mergeConfg[filepath] + '.js';
+                    return '/pkg/' + mergeConfg[filepath] + '.js';
                 },
                 css: function(filepath) {
-                    return 'pkg/css/' + mergeConfg[filepath] + '.css';
+                    return '/pkg/' + mergeConfg[filepath] + '.css';
                 }
             }
         })
@@ -126,7 +136,7 @@ fis.media('prod')
     })
     .match('*.js', {
         // fis-optimizer-uglify-js 插件进行压缩，已内置
-        useHash:false,
+        useHash: false,
         optimizer: fis.plugin('uglify-js'),
         domain: 'http://j1.58cdn.com.cn' + urlPre
     })
@@ -137,10 +147,10 @@ fis.media('prod')
         postpackager: fis.plugin('loader', {
             allInOne: {
                 js: function(filepath) {
-                    return 'pkg/js/' + mergeConfg[filepath] + '.js';
+                    return '/pkg/' + mergeConfg[filepath] + '.js';
                 },
                 css: function(filepath) {
-                    return 'pkg/css/' + mergeConfg[filepath] + '.css';
+                    return '/pkg/' + mergeConfg[filepath] + '.css';
                 }
             }
         })
