@@ -1,7 +1,18 @@
+//发布路径设置
+fis.set('release',{
+    'dir':'output',
+    /*'watch':true,
+    'live':true,*/
+    'clean':false,
+    /*'lint':true,*/
+    'clear':true
+});
+
 var urlPre = '/zt/xxx';
 var mergeConfg = {
     '/src/index.html': 'index',
-    '/src/page1.html': 'page1'
+    '/src/page1.html': 'page1',
+    '/src/page2.html': 'page2'
 };
 
 
@@ -28,11 +39,12 @@ fis.match('::package', {
 
 
 //资源预处理
-fis.match('css/*.scss', {
+fis.match('*.scss', {
     parser: fis.plugin('node-sass'),
     rExt: '.css',
+    useSprite: true,
 });
-fis.match('css/*.{scss,css}', {
+fis.match('*.css', {
     useSprite: true,
 });
 
@@ -58,6 +70,9 @@ fis.match('src/js/(lib/**)', {
     useHash: false
 });
 
+fis.match('src/fragment/**', {
+    release: false,
+});
 
 // css javascript 代码校验
 fis.match('*.css', {
@@ -94,6 +109,7 @@ fis.media('debug').match('*.{js,css,scss,png}', {
 });
 
 fis.media('test')
+    .set('release.dir','output2')
     .match('::package', {
         postpackager: fis.plugin('loader', {
             allInOne: {
@@ -105,20 +121,9 @@ fis.media('test')
                 }
             }
         })
-    })
-    .match('*.{css,scss}', {
-        useHash: false,
-        optimizer: fis.plugin('clean-css'),
-    })
-    .match('*.png', {
-        useHash: true,
-        optimizer: fis.plugin('png-compressor'),
-    })
-    .match('*.js', {
-        // fis-optimizer-uglify-js 插件进行压缩，已内置
-        useHash: false,
-        optimizer: fis.plugin('uglify-js'),
     });
+  
+
 
 
 // 上线时打包配置

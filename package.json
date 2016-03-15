@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "fis-parser-node-sass":"0.1.9",
-    "fis3-postpackager-loader": "git://github.com/winnieBear/fis3-postpackager-loader.git",
-	  "fis-spriter-csssprites-group":"^0.3.9",
-    "fiss-lint-csslint": "^1.0.1",
-    "fiss-lint-eslint": "^1.0.1"
+    "fiss-parser-node-sass":"*",
+    "fiss-postpackager-loader": "*",
+    "fis-spriter-csssprites-group":"0.3.9",
+    "fiss-lint-csslint": "^1.0.0",
+    "fiss-lint-eslint": "^1.0.0"
   },
   "author": "",
   "license": "MIT"
