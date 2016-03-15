@@ -10,6 +10,7 @@
     "fiss-parser-node-sass":"*",
     "fiss-postpackager-loader": "*",
     "fis-spriter-csssprites-group":"0.3.9",
+    "fis-lint-html-hint": "^1.0.0",
     "fiss-lint-csslint": "^1.0.0",
     "fiss-lint-eslint": "^1.0.0"
   },

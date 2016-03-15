@@ -1,11 +1,11 @@
 //发布路径设置
-fis.set('release',{
-    'dir':'output',
+fis.set('release', {
+    'dir': 'output',
     /*'watch':true,
     'live':true,*/
-    'clean':false,
+    'clean': false,
     /*'lint':true,*/
-    'clear':true
+    'clear': true
 });
 
 var urlPre = '/zt/xxx';
@@ -74,8 +74,24 @@ fis.match('src/fragment/**', {
     release: false,
 });
 
-// css javascript 代码校验
-fis.match('*.css', {
+//------------------------------------代码校验BEGIN----------------------------
+
+fis
+//html 校验
+.match('*.html', {
+    lint: fis.plugin('html-hint', {
+        // HTMLHint Options
+        ignoreFiles: [],
+        rules: {
+            "tag-pair": true,
+            "doctype-first": true,
+            "spec-char-escape": true,
+            "id-unique": true,
+        }
+    })
+})
+// css 校验
+.match('*.css', {
     lint: fis.plugin('csslint', {
         ignoreFiles: [],
         rules: {
@@ -84,22 +100,25 @@ fis.match('*.css', {
             "duplicate-properties": 2
         }
     })
-}).match('*.js', {
+})
+//js 校验
+.match('*.js', {
     lint: fis.plugin('eslint', {
-        ignoreFiles: ['lib/**.js', 'fis-conf.js'],
+        ignoreFiles: ['lib/**.js', 'fis-conf.js', 'test/**.js'],
         rules: {
-            "no-underscore-dangle": 0,
             "no-unused-expressions": 1,
-            "eol-last": 1,
-            "curly": 1,
             "no-unused-vars": 1,
             "no-use-before-define": 2,
             "no-undef": 2,
-            "block-scoped-var": 2,
         },
-        globals: ['zt']
+        //envs:[],
+        globals: [
+            'zt',
+        ]
     })
 });
+//------------------------------------代码校验END----------------------------
+
 
 // 调试时的配置
 fis.media('debug').match('*.{js,css,scss,png}', {
@@ -109,7 +128,7 @@ fis.media('debug').match('*.{js,css,scss,png}', {
 });
 
 fis.media('test')
-    .set('release.dir','output2')
+    .set('release.dir', 'output2')
     .match('::package', {
         postpackager: fis.plugin('loader', {
             allInOne: {
@@ -122,7 +141,7 @@ fis.media('test')
             }
         })
     });
-  
+
 
 
 

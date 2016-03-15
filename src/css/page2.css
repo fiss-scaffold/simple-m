@@ -1,0 +1,11 @@
+/**
+ * page2.css
+ * @require one.css
+ * @require another.css
+ */
+body{
+	background-color: red;
+}
+p {
+  color: red;
+}
