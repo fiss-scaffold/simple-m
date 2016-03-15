@@ -15,16 +15,19 @@ var mergeConfg = {
     '/src/page2.html': 'page2'
 };
 
+fis.set('project.files', [
+    'src/**'
+]);
 
 
 //添加忽略的文件列表
-fis.set('project.ignore', [
+/*fis.set('project.ignore', [
     'output/**',
     'node_modules/**',
     '.git/**',
     '.svn/**',
     'package.json',
-]);
+]);*/
 
 
 //package 设置
