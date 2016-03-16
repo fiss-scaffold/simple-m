@@ -32,10 +32,10 @@ fis.set('project.files', [
 
 //package 设置
 fis.match('::package', {
-    spriter: fis.plugin('csssprites-group', {
+    spriter: fis.plugin('csssprites-plus', {
         margin: 10,
         layout: 'matrix',
-        to: '/pkg/img'
+        to: '/img'
     })
 });
 
@@ -69,7 +69,7 @@ fis.match('/src/test/server.conf', {
 });
 
 fis.match('src/js/(lib/**)', {
-    release: '/pkg/$1',
+    //release: '/pkg/$1',
     useHash: false
 });
 
@@ -132,18 +132,32 @@ fis.media('debug').match('*.{js,css,scss,png}', {
 
 fis.media('test')
     .set('release.dir', 'output2')
+    .match('*.{js,css,scss,png}', {
+        useHash: true,
+    })
     .match('::package', {
         postpackager: fis.plugin('loader-x', {
             allInOne: {
                 js: function(filepath) {
-                    return '/pkg/' + mergeConfg[filepath] + '.js';
+                    return '/js/' + mergeConfg[filepath] + '.js';
                 },
                 css: function(filepath) {
-                    return '/pkg/' + mergeConfg[filepath] + '.css';
+                    return '/css/' + mergeConfg[filepath] + '.css';
                 }
             }
         })
-    });
+    })
+    .match('**', {
+      deploy: [
+        fis.plugin('skip-packed', {
+          // 配置项
+        }),
+
+        fis.plugin('local-deliver', {
+          to: 'publish'
+        })
+      ]
+    })
 
 
 
@@ -180,7 +194,18 @@ fis.media('prod')
                 }
             }
         })
-    });
+    })
+    .match('**', {
+      deploy: [
+        fis.plugin('skip-packed', {
+          // 配置项
+        }),
+
+        fis.plugin('local-deliver', {
+          to: 'publish'
+        })
+      ]
+    })
 /* .match('*.html', {
      //invoke fis-optimizer-html-minifier
      optimizer: fis.plugin('html-minifier')

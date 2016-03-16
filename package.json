@@ -9,7 +9,8 @@
   "dependencies": {
     "fis-parser-node-sass-x":"*",
     "fis3-postpackager-loader-x": "*",
-    "fis-spriter-csssprites-group":"0.3.9",
+    "fis-spriter-csssprites-plus":"*",
+    "fis3-deploy-skip-packed":"0.0.5",
     "fis-lint-html-hint": "^1.0.0",
     "fiss-lint-csslint": "^1.0.0",
     "fiss-lint-eslint": "^1.0.0"
