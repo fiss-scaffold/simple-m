@@ -43,7 +43,7 @@ fis.match('::package', {
 
 //资源预处理
 fis.match('*.scss', {
-    parser: fis.plugin('node-sass'),
+    parser: fis.plugin('node-sass-x'),
     rExt: '.css',
     useSprite: true,
 });
@@ -133,7 +133,7 @@ fis.media('debug').match('*.{js,css,scss,png}', {
 fis.media('test')
     .set('release.dir', 'output2')
     .match('::package', {
-        postpackager: fis.plugin('loader', {
+        postpackager: fis.plugin('loader-x', {
             allInOne: {
                 js: function(filepath) {
                     return '/pkg/' + mergeConfg[filepath] + '.js';
@@ -170,7 +170,7 @@ fis.media('prod')
         domain: 'http://j1.58cdn.com.cn' + urlPre
     })
     .match('::package', {
-        postpackager: fis.plugin('loader', {
+        postpackager: fis.plugin('loader-x', {
             allInOne: {
                 js: function(filepath) {
                     return '/pkg/' + mergeConfg[filepath] + '.js';
