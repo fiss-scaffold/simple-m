@@ -131,9 +131,12 @@ fis.media('debug').match('*.{js,css,scss,png}', {
 });
 
 fis.media('test')
+    .match('{test/*,config/*}', {
+        release: false
+    })
     .set('release.dir', 'output2')
     .match('*.{js,css,scss,png}', {
-        useHash: true,
+        useHash: false,
     })
     .match('::package', {
         postpackager: fis.plugin('loader-x', {
@@ -164,6 +167,9 @@ fis.media('test')
 
 // 上线时打包配置
 fis.media('prod')
+    .match('{test/*,config/*}', {
+        release: false
+    })
     .match('*.{css,scss}', {
         useHash: false,
         optimizer: fis.plugin('clean-css'),
@@ -187,10 +193,10 @@ fis.media('prod')
         postpackager: fis.plugin('loader-x', {
             allInOne: {
                 js: function(filepath) {
-                    return '/pkg/' + mergeConfg[filepath] + '.js';
+                    return '/js/' + mergeConfg[filepath] + '.js';
                 },
                 css: function(filepath) {
-                    return '/pkg/' + mergeConfg[filepath] + '.css';
+                    return '/css/' + mergeConfg[filepath] + '.css';
                 }
             }
         })
