@@ -150,17 +150,40 @@ fis.media('test')
             }
         })
     })
-    .match('**', {
-      deploy: [
-        fis.plugin('skip-packed', {
-          // 配置项
-        }),
+     .match('*', {
+        deploy: [
+            fis.plugin('skip-packed', {
+                // 配置项
+                //ignore:[]
+            }),
+           /* fis.plugin('local-deliver', {
+              to: '/publish/'
+            }),*/
+            fis.plugin('ftp-x', {
+                //'console':true,
+                remoteDir : '/static.58.com/zt/xxx/',
+                exclude:['/img/'],
+                connect : {
+                    host : '192.168.119.5',
+                    port : '21',
+                    user : 'qatest',
+                    password : 'ftp@fe'
+                }
+            }),
+            fis.plugin('ftp-x', {
+                //'console':true,
+                remoteDir : '/pic2.58.com/zt/xxx/',
+                include:['/img/'],
+                connect : {
+                    host : '192.168.119.5',
+                    port : '21',
+                    user : 'qatest',
+                    password : 'ftp@fe'
+                }
+            })
+        ]
+    });
 
-        fis.plugin('local-deliver', {
-          to: 'publish'
-        })
-      ]
-    })
 
 
 
@@ -217,10 +240,5 @@ fis.media('prod')
      optimizer: fis.plugin('html-minifier')
  });*/
 
-//deploy
-fis.media('qa').match('*', {
-    deploy: fis.plugin('http-push', {
-        receiver: 'http://192.168.119.5:8999/receiver',
-        to: '/home/fe/webs/fis3_demo' // 注意这个是指的是测试机器的路径，而非本地机器
-    })
-});
+
+
