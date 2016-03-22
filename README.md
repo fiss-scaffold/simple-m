@@ -2,17 +2,48 @@
 
 一个基于 fiss 的简单 M 端工程模板。
 
-## 使用方法
+## 适用场景
+* 适用于移动端的简单小型项目的开发，利润专题页，运营活动页，项目可能只包含若干个页面，几个js，几个css等
+* 不采用模块化来管理你的js的项目
+
+## 采用此模版的项目推荐采用如下代码组织形式
+* 把css/js/img都拆分成最小化模块开发
+* js采用自执行函数把每一个模块封装在里面，不要暴露全局变量
+```js
+//你的js应该包含在一个自执行函数里面
+;(function() {
+    var a = 1;
+    console.info('bar.js 业务逻辑代码在这里,%s！', a);
+})();
+```
+* css推荐用scss来开发和管理依赖
+* html源码把所有用到的css和js都通过link/script标签引入，最后构建时合成成一个文件
+```html
+<link rel="stylesheet" type="text/css" href="css/one.css">
+<link rel="stylesheet" type="text/css" href="css/another.css">
+<link rel="stylesheet" type="text/css" href="css/...css">
+
+
+<script src="js/busi/foo.js"></script>
+<script src="js/busi/bar.js"></script>
+   ...
+```
+
 ## 安装方法
 ```bash
 #首先安装fiss
 npm install fiss -g 
+
+#安装本模版
 fiss init simple-m
 
-#或clone之后，用npm安装，因为gfw，非常建议使用cnpm来安装，否则某些模块安装不了
+## 另外一种方法
+# git clone之后，用npm安装，因为gfw，非常建议使用cnpm来安装，否则某些模块安装不了
 git clone https://github.com/fiss-scaffold/simple-m.git
+
 #安装cnpm，如果已经安装跳过此步
 npm install cnpm -g
+
 #安装需要的插件
 cnpm intall
 
