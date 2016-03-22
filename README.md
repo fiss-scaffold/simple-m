@@ -30,6 +30,8 @@
 ```
 
 ## 安装方法
+>注意：因为部分插件不支持最新的nodejs，建议**nodejs <= 4.x**
+
 ```bash
 #首先安装fiss
 npm install fiss -g 
