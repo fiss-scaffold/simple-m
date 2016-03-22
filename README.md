@@ -19,8 +19,8 @@ cnpm intall
 ```
 
 ## 打包方法
-考虑到开发过程各阶段的需求，本模版的配置文件默认配置好了集中打包方案，分别如下：
-### dev默认打包配置)
+考虑到开发过程各阶段的需求，本模版的配置文件默认配置好了几种打包方案，分别如下：
+### dev (默认打包配置)
 dev是默认的打包配置
 ```bash
 # 不带参数，默认用dev配置
@@ -36,7 +36,7 @@ dev（开发阶段）打包时：
  * 默认开启文件修改自动刷新浏览器机制，自动刷新浏览器，看到修改后的效果
  * 默认的构建后的文件放在系统默认的输出路径（通过fiss server open查看）
 
-### test（自测环节)
+### test (自测环节)
 ```bash
 #打包test配置
 fiss release test
@@ -45,7 +45,7 @@ test（自测环节）打包时在dev配置的基础上增加：
  * 对css/js/img进行合并，对已合并的资源不删除
  * 默认的构建后的文件放在系统默认的输出路径（通过fiss server open查看）
 
-### pre-qa(提交qa测试之前本地确认)
+### pre-qa (提交qa测试之前本地确认)
 ```bash
 #打包pre-qa配置
 fiss release pre-qa
@@ -57,7 +57,7 @@ pre-qa(提交qa测试之前本地确认)打包时在test配置的基础上增加
 pre-qa 跟下面的qa的配置*不同的*是没有把所有资源的引用路径换成线上的路径，方便在本地测试下完整的版本。
 
 
-### qa(提交qa测试的配置)
+### qa (提交qa测试的配置)
 ```bash
 #打包qa配置
 fiss release qa
@@ -71,7 +71,7 @@ qa(提交qa测试的配置)打包时在pre-qa配置的基础上增加：
 qa的版本跟prod的区别就是`静态资源没有压缩`，是为了方便qa测试，定位问题，。
 
 
-### prod(上线打包配置)
+### prod (上线打包配置)
 ```bash
 #打包prod配置
 fiss release prod
@@ -79,7 +79,7 @@ fiss release prod
 prod(上线打包配置)打包时在qa配置的基础上增加：
  * 所有资源压缩
 
-### deploy-ftp(把prod版本部署到ftp服务器)
+### deploy-ftp (把prod版本部署到ftp服务器)
 ```bash
 #打包deploy-ftp配置
 fiss release deploy-ftp
