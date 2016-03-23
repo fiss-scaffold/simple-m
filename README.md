@@ -35,10 +35,21 @@
 ```bash
 #首先安装fiss
 npm install fiss -g 
+```
 
-#安装本模版
+### init一个模版的方法
+```bash
+#通过模版的名字安装本模版
 fiss init simple-m
 
+#或通过github的名字来安装模版
+fiss init github:fiss-scaffold/simple-m
+
+#或者你本地自定义了一个模版，放在/localpath/mytpl
+fiss init /localpath/mytpl
+
+### 也可以把模版下载下来，自己安装依赖
+```bash
 ## 另外一种方法
 # git clone之后，用npm安装，因为gfw，非常建议使用cnpm来安装，否则某些模块安装不了
 git clone https://github.com/fiss-scaffold/simple-m.git
