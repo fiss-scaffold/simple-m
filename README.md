@@ -127,6 +127,8 @@ prod(上线打包配置)打包时在qa配置的基础上增加：
 #打包deploy-ftp配置
 fiss release deploy-ftp
 ```
+**请注意**测试时需要先修改ftp的配置信息才能运行此配置。
+
 deploy-ftp(把prod版本部署到ftp服务器)是把prod版本部署到ftp服务器上，不建议使用，建议在本地测试，只有有必要时才需要这么做。
 
 
