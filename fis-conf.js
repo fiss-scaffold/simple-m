@@ -374,10 +374,10 @@ fis.media('deploy-ftp')
                 remoteDir: '/pic2.58.com/zt/xxx/',
                 include: ['/img/'],
                 connect: {
-                    host: '192.168.119.5',
+                    host: '192.168.*',
                     port: '21',
-                    user: 'qatest',
-                    password: 'ftp@fe'
+                    user: 'xxx',
+                    password: 'xxx'
                 }
             })
         ]
