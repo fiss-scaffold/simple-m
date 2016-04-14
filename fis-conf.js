@@ -157,7 +157,7 @@ fis.media('test')
 
 fis.media('pre-qa')
     .match('src/(**)', {
-        useHash:false 
+        useHash:false
     })
     .match('*.{css,scss}', {
         useSprite: true,
@@ -363,10 +363,10 @@ fis.media('deploy-ftp')
                 remoteDir: '/static.58.com/zt/xxx/',
                 exclude: ['/img/'],
                 connect: {
-                    host: '192.168.119.5',
+                    host: '192.168.*',
                     port: '21',
-                    user: 'qatest',
-                    password: 'ftp@fe'
+                    user: 'xxx',
+                    password: 'xxx'
                 }
             }),
             fis.plugin('ftp-x', {

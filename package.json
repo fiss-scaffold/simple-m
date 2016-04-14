@@ -12,9 +12,6 @@
     "fis-spriter-csssprites-plus":"*",
     "fis3-deploy-skip-packed":"0.0.5",
     "fis3-deploy-ftp-x":"*",
-    "fis-lint-html-hint": "^1.0.0",
-    "fis3-lint-csslint": "^1.0.1",
-    "fis3-lint-eslint": "^1.0.0"
   },
   "author": "",
   "license": "MIT"
