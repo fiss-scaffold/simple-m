@@ -195,6 +195,14 @@ fis.media('pre-qa')
  * 所有资源不压缩
  */
 fis.media('qa')
+    .set('release', {
+        //'dir': 'output',
+        'watch': false,
+        'live': false,
+        'clean': false,
+        'lint': true,
+        'clear': true
+    })
     .match('{test/*,config/*}', {
         release: false
     })
@@ -248,6 +256,14 @@ fis.media('qa')
  * 所有资源压缩
  */
 fis.media('prod')
+    .set('release', {
+        //'dir': 'output',
+        'watch': false,
+        'live': false,
+        'clean': false,
+        'lint': true,
+        'clear': true
+    })
     .match('{test/*,config/*}', {
         release: false
     })
@@ -311,6 +327,14 @@ fis.media('prod')
  * 所有资源发布到ftp
  */
 fis.media('deploy-ftp')
+    .set('release', {
+        //'dir': 'output',
+        'watch': false,
+        'live': false,
+        'clean': false,
+        'lint': true,
+        'clear': true
+    })
     .match('{test/*,config/*}', {
         release: false
     })
