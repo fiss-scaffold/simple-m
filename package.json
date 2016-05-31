@@ -11,7 +11,7 @@
     "fis3-postpackager-loader-x": "*",
     "fis-spriter-csssprites-plus":"*",
     "fis3-deploy-skip-packed":"0.0.5",
-    "fis3-deploy-ftp-x":"*",
+    "fis3-deploy-ftp-x":"*"
   },
   "author": "",
   "license": "MIT"
